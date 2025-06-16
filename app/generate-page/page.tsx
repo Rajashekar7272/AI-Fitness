@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useUser } from "@clerk/nextjs";
+import { motion } from "framer-motion";
 import {
   Bandage,
   BarChart2,
@@ -27,10 +27,8 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { motion } from "framer-motion";
 
 const GenerateProgramPage = () => {
-  const { user } = useUser();
   const router = useRouter();
   const [inputs, setInputs] = useState({
     age: "",
@@ -124,7 +122,10 @@ Ensure that:
     } catch (err) {
       console.error("Error generating plan:", err);
       setError("Failed to generate program. Please try again.");
-      sessionStorage.setItem("fitnessPlan", JSON.stringify({ error: "Failed to generate program" }));
+      sessionStorage.setItem(
+        "fitnessPlan",
+        JSON.stringify({ error: "Failed to generate program" })
+      );
       router.push("/profile");
     } finally {
       setLoading(false);
@@ -241,7 +242,9 @@ Ensure that:
                 </Label>
                 <Select
                   value={inputs.injuries}
-                  onValueChange={(value) => handleSelectChange("injuries", value)}
+                  onValueChange={(value) =>
+                    handleSelectChange("injuries", value)
+                  }
                 >
                   <SelectTrigger className="border-gray-300 focus:ring-2 focus:ring-blue-400">
                     <SelectValue placeholder="Select injury if any" />
@@ -251,7 +254,9 @@ Ensure that:
                     <SelectItem value="Leg injury">Leg injury</SelectItem>
                     <SelectItem value="Hand injury">Hand injury</SelectItem>
                     <SelectItem value="Back pain">Back pain</SelectItem>
-                    <SelectItem value="Shoulder strain">Shoulder strain</SelectItem>
+                    <SelectItem value="Shoulder strain">
+                      Shoulder strain
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </motion.div>
@@ -290,7 +295,9 @@ Ensure that:
                 </Label>
                 <Select
                   value={inputs.fitnessGoal}
-                  onValueChange={(value) => handleSelectChange("fitnessGoal", value)}
+                  onValueChange={(value) =>
+                    handleSelectChange("fitnessGoal", value)
+                  }
                 >
                   <SelectTrigger className="border-gray-300 focus:ring-2 focus:ring-blue-400">
                     <SelectValue placeholder="Select your goal" />
@@ -298,9 +305,13 @@ Ensure that:
                   <SelectContent>
                     <SelectItem value="Muscle gain">Muscle gain</SelectItem>
                     <SelectItem value="Six-pack abs">Six-pack abs</SelectItem>
-                    <SelectItem value="Chest building">Chest building</SelectItem>
+                    <SelectItem value="Chest building">
+                      Chest building
+                    </SelectItem>
                     <SelectItem value="Weight loss">Weight loss</SelectItem>
-                    <SelectItem value="Endurance improvement">Endurance improvement</SelectItem>
+                    <SelectItem value="Endurance improvement">
+                      Endurance improvement
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </motion.div>
@@ -317,7 +328,9 @@ Ensure that:
                 </Label>
                 <Select
                   value={inputs.fitnessLevel}
-                  onValueChange={(value) => handleSelectChange("fitnessLevel", value)}
+                  onValueChange={(value) =>
+                    handleSelectChange("fitnessLevel", value)
+                  }
                 >
                   <SelectTrigger className="border-gray-300 focus:ring-2 focus:ring-blue-400">
                     <SelectValue placeholder="Select your level" />
@@ -342,7 +355,9 @@ Ensure that:
                 </Label>
                 <Select
                   value={inputs.dietaryRestrictions}
-                  onValueChange={(value) => handleSelectChange("dietaryRestrictions", value)}
+                  onValueChange={(value) =>
+                    handleSelectChange("dietaryRestrictions", value)
+                  }
                 >
                   <SelectTrigger className="border-gray-300 focus:ring-2 focus:ring-blue-400">
                     <SelectValue placeholder="Select restrictions" />
@@ -350,10 +365,16 @@ Ensure that:
                   <SelectContent>
                     <SelectItem value="None">None</SelectItem>
                     <SelectItem value="Vegetarian">Vegetarian</SelectItem>
-                    <SelectItem value="Non-vegetarian">Non-vegetarian</SelectItem>
+                    <SelectItem value="Non-vegetarian">
+                      Non-vegetarian
+                    </SelectItem>
                     <SelectItem value="Vegan">Vegan</SelectItem>
-                    <SelectItem value="Food allergies">Food allergies</SelectItem>
-                    <SelectItem value="Lactose intolerant">Lactose intolerant</SelectItem>
+                    <SelectItem value="Food allergies">
+                      Food allergies
+                    </SelectItem>
+                    <SelectItem value="Lactose intolerant">
+                      Lactose intolerant
+                    </SelectItem>
                     <SelectItem value="Gluten-free">Gluten-free</SelectItem>
                   </SelectContent>
                 </Select>

@@ -1,12 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Calendar, Dumbbell, Utensils, Apple } from "lucide-react";
-import { motion } from "framer-motion";
-import { useUser } from "@clerk/nextjs";
 import ProfileHeader from "@/components/ProfileHeader";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { useUser } from "@clerk/nextjs";
+import { motion } from "framer-motion";
+import { Apple, Calendar, Dumbbell, Utensils } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface WorkoutDay {
   workout: string;
@@ -47,7 +54,6 @@ const dayNames: Record<string, string> = {
 
 export default function PlanPage() {
   const { user } = useUser();
-  const userId = user?.id as string;
 
   const [plan, setPlan] = useState<Plan | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -83,7 +89,9 @@ export default function PlanPage() {
         transition={{ duration: 0.3 }}
         className="max-w-5xl mx-auto px-4 py-10"
       >
-        <p className="text-center text-red-500">{error || "No plan available."}</p>
+        <p className="text-center text-red-500">
+          {error || "No plan available."}
+        </p>
       </motion.div>
     );
   }
@@ -113,28 +121,38 @@ export default function PlanPage() {
               <Table className="w-full border border-gray-200 rounded-lg">
                 <TableHeader>
                   <TableRow className="bg-black">
-                    <TableHead className="font-semibold text-white rounded-tl-lg">Day</TableHead>
-                    <TableHead className="font-semibold text-white">Workout</TableHead>
-                    <TableHead className="font-semibold text-white rounded-tr-lg">Rest</TableHead>
+                    <TableHead className="font-semibold text-white rounded-tl-lg">
+                      Day
+                    </TableHead>
+                    <TableHead className="font-semibold text-white">
+                      Workout
+                    </TableHead>
+                    <TableHead className="font-semibold text-white rounded-tr-lg">
+                      Rest
+                    </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {Object.entries(fitness_plan.weekly_schedule).map(([day, details], index) => (
-                    <TableRow
-                      key={day}
-                      className="hover:bg-gray-800 transition-colors duration-200 animate-slide-in"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      <TableCell className="font-medium">
-                        <div className="flex items-center space-x-2">
-                          <Calendar className="w-4 h-4 text-blue-400" />
-                          <span>{dayNames[day] || day.replace("day_", "Day ")}</span>
-                        </div>
-                      </TableCell>
-                      <TableCell>{details.workout}</TableCell>
-                      <TableCell>{details.rest}</TableCell>
-                    </TableRow>
-                  ))}
+                  {Object.entries(fitness_plan.weekly_schedule).map(
+                    ([day, details], index) => (
+                      <TableRow
+                        key={day}
+                        className="hover:bg-gray-800 transition-colors duration-200 animate-slide-in"
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                      >
+                        <TableCell className="font-medium">
+                          <div className="flex items-center space-x-2">
+                            <Calendar className="w-4 h-4 text-blue-400" />
+                            <span>
+                              {dayNames[day] || day.replace("day_", "Day ")}
+                            </span>
+                          </div>
+                        </TableCell>
+                        <TableCell>{details.workout}</TableCell>
+                        <TableCell>{details.rest}</TableCell>
+                      </TableRow>
+                    )
+                  )}
                 </TableBody>
               </Table>
             </div>
@@ -166,32 +184,46 @@ export default function PlanPage() {
               <Table className="w-full border border-gray-200 rounded-lg">
                 <TableHeader>
                   <TableRow className="">
-                    <TableHead className="font-semibold text-gray-100 rounded-tl-lg">Meal</TableHead>
-                    <TableHead className="font-semibold text-gray-100">Description</TableHead>
-                    <TableHead className="font-semibold text-gray-100">Protein</TableHead>
-                    <TableHead className="font-semibold text-gray-100">Carbs</TableHead>
-                    <TableHead className="font-semibold text-gray-100 rounded-tr-lg">Fats</TableHead>
+                    <TableHead className="font-semibold text-gray-100 rounded-tl-lg">
+                      Meal
+                    </TableHead>
+                    <TableHead className="font-semibold text-gray-100">
+                      Description
+                    </TableHead>
+                    <TableHead className="font-semibold text-gray-100">
+                      Protein
+                    </TableHead>
+                    <TableHead className="font-semibold text-gray-100">
+                      Carbs
+                    </TableHead>
+                    <TableHead className="font-semibold text-gray-100 rounded-tr-lg">
+                      Fats
+                    </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {Object.entries(nutrition_plan.daily_meals).map(([meal, details], index) => (
-                    <TableRow
-                      key={meal}
-                      className="hover:bg-gray-800 transition-colors duration-200 animate-slide-in"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      <TableCell className="font-medium">
-                        <div className="flex items-center space-x-2">
-                          <Utensils className="w-4 h-4 text-green-400" />
-                          <span>{meal.charAt(0).toUpperCase() + meal.slice(1)}</span>
-                        </div>
-                      </TableCell>
-                      <TableCell>{details.description}</TableCell>
-                      <TableCell>{details.protein}</TableCell>
-                      <TableCell>{details.carbs}</TableCell>
-                      <TableCell>{details.fats}</TableCell>
-                    </TableRow>
-                  ))}
+                  {Object.entries(nutrition_plan.daily_meals).map(
+                    ([meal, details], index) => (
+                      <TableRow
+                        key={meal}
+                        className="hover:bg-gray-800 transition-colors duration-200 animate-slide-in"
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                      >
+                        <TableCell className="font-medium">
+                          <div className="flex items-center space-x-2">
+                            <Utensils className="w-4 h-4 text-green-400" />
+                            <span>
+                              {meal.charAt(0).toUpperCase() + meal.slice(1)}
+                            </span>
+                          </div>
+                        </TableCell>
+                        <TableCell>{details.description}</TableCell>
+                        <TableCell>{details.protein}</TableCell>
+                        <TableCell>{details.carbs}</TableCell>
+                        <TableCell>{details.fats}</TableCell>
+                      </TableRow>
+                    )
+                  )}
                 </TableBody>
               </Table>
             </div>

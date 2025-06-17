@@ -9,7 +9,7 @@ import AIImage from "../public/Image.jpg";
 const HomePage = () => {
   return (
     <div className="flex flex-col min-h-screen text-foreground overflow-hidden">
-      <section className="relative z-10 py-24 flex-grow">
+      <section className="relative z-10 py-14 flex-grow">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative">
             {/* CORNER DECARATION */}
@@ -37,7 +37,7 @@ const HomePage = () => {
               <div className="h-px w-full bg-gradient-to-r from-primary via-secondary to-primary opacity-50"></div>
 
               <p className="text-xl text-muted-foreground w-2/3">
-                Talk to our AI assistant and get personalized diet plans and
+                Our AI assistant helps you get personalized diet plans and
                 workout routines designed just for you
               </p>
 
@@ -70,11 +70,11 @@ const HomePage = () => {
                 <Button
                   size="lg"
                   asChild
-                  className="overflow-hidden bg-primary text-primary-foreground px-8 py-6 text-lg font-medium"
+                  className="overflow-hidden bg-primary text-black px-8 py-6 text-lg font-medium"
                 >
                   <Link
                     href={"/generate-page"}
-                    className="flex items-center font-mono"
+                    className="flex items-center font-mono animate-pulse hover:animate-none"
                   >
                     Build Your Program
                     <ArrowRightIcon className="ml-2 size-5" />

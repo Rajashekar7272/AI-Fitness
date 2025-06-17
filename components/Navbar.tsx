@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
-import { DumbbellIcon, HomeIcon, UserIcon, ZapIcon, MenuIcon, XIcon } from "lucide-react";
+import {
+  DumbbellIcon,
+  HomeIcon,
+  UserIcon,
+  ZapIcon,
+  MenuIcon,
+  XIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
@@ -44,7 +51,9 @@ const Navbar = () => {
                   href={href}
                   className={cn(
                     "flex items-center gap-1.5 text-sm transition-colors hover:text-primary",
-                    pathname === href ? "text-primary font-semibold" : "text-foreground"
+                    pathname === href
+                      ? "text-primary font-semibold"
+                      : "text-foreground"
                   )}
                 >
                   <Icon size={16} />
@@ -126,7 +135,9 @@ const Navbar = () => {
                 onClick={toggleMenu}
                 className={cn(
                   "flex items-center gap-2 text-sm transition-colors hover:text-primary py-2",
-                  pathname === href ? "text-primary font-semibold" : "text-foreground"
+                  pathname === href
+                    ? "text-primary font-semibold"
+                    : "text-foreground"
                 )}
               >
                 <Icon size={20} />

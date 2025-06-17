@@ -133,19 +133,23 @@ Ensure that:
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
+    <div className="max-w-5xl mx-auto px-4 py-2">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="text-center mb-10"
       >
-        <h1 className="text-4xl font-extrabold mb-3 bg-gradient-to-r from-green-500 to-indigo-600 bg-clip-text text-transparent">
+        <h1 className="text-4xl font-extrabold mb-3 bg-gradient-to-r from-green-500 via-green-600 to-indigo-600 bg-clip-text text-transparent">
           Create Your Personalized Fitness Plan
         </h1>
         <p className="text-gray-500 max-w-2xl mx-auto">
           Answer a few questions to get a customized workout and nutrition plan
           tailored just for you
+        </p>
+        <p>
+          AI will analyze your inputs and generate a comprehensive plan that
+          fits your goals, fitness level, and dietary needs.
         </p>
       </motion.div>
 
@@ -176,13 +180,14 @@ Ensure that:
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
-                <Label className="flex items-center gap-2">
-                  <User size={16} className="text-blue-400" />
+                <Label className="flex items-center gap-2 text-xl">
+                  <User size={26} className="text-green-400" />
                   Age
                 </Label>
                 <Input
                   type="number"
                   name="age"
+                  required
                   value={inputs.age}
                   onChange={handleInputChange}
                   placeholder="Enter your age"
@@ -196,13 +201,13 @@ Ensure that:
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.4 }}
               >
-                <Label className="flex items-center gap-2">
-                  <Ruler size={16} className="text-blue-400" />
+                <Label className="flex items-center gap-2 text-xl">
+                  <Ruler size={26} className="text-green-400" />
                   Height (cm or Feet/Inches)
                 </Label>
                 <Input
                   type="text"
-                  name="height"
+                  name="height" required
                   value={inputs.height}
                   onChange={handleInputChange}
                   placeholder="e.g., 170 cm or 5'7"
@@ -216,8 +221,8 @@ Ensure that:
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.5 }}
               >
-                <Label className="flex items-center gap-2">
-                  <Weight size={16} className="text-blue-400" />
+                <Label className="flex items-center gap-2 text-xl">
+                  <Weight size={26} className="text-green-400" />
                   Weight (kg or lbs)
                 </Label>
                 <Input
@@ -236,8 +241,8 @@ Ensure that:
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.6 }}
               >
-                <Label className="flex items-center gap-2">
-                  <Bandage size={16} className="text-blue-400" />
+                <Label className="flex items-center gap-2 text-xl">
+                  <Bandage size={26} className="text-green-400" />
                   Injuries
                 </Label>
                 <Select
@@ -267,8 +272,8 @@ Ensure that:
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.7 }}
               >
-                <Label className="flex items-center gap-2">
-                  <Calendar size={16} className="text-blue-400" />
+                <Label className="flex items-center gap-2 text-xl">
+                  <Calendar size={26} className="text-green-400" />
                   Workout Days/Week
                 </Label>
                 <Input
@@ -289,8 +294,8 @@ Ensure that:
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.8 }}
               >
-                <Label className="flex items-center gap-2">
-                  <Goal size={16} className="text-blue-400" />
+                <Label className="flex items-center gap-2 text-xl">
+                  <Goal size={26} className="text-green-400" />
                   Fitness Goal
                 </Label>
                 <Select
@@ -312,6 +317,12 @@ Ensure that:
                     <SelectItem value="Endurance improvement">
                       Endurance improvement
                     </SelectItem>
+                    <SelectItem value="Wide Back/V-Taper Look">
+                      Wide Back/V-Taper Look
+                    </SelectItem>
+                    <SelectItem value="Leg Growth & Strength">
+                      Leg Growth & Strength
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </motion.div>
@@ -322,8 +333,8 @@ Ensure that:
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.9 }}
               >
-                <Label className="flex items-center gap-2">
-                  <BarChart2 size={16} className="text-blue-400" />
+                <Label className="flex items-center gap-2 text-xl">
+                  <BarChart2 size={26} className="text-green-400" />
                   Fitness Level
                 </Label>
                 <Select
@@ -349,8 +360,8 @@ Ensure that:
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 1.0 }}
               >
-                <Label className="flex items-center gap-2">
-                  <Utensils size={16} className="text-blue-400" />
+                <Label className="flex items-center gap-2 text-xl">
+                  <Utensils size={26} className="text-green-400" />
                   Dietary Restrictions
                 </Label>
                 <Select

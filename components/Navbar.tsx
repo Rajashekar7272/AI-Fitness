@@ -1,19 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { cn } from "@/lib/utils";
 import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
 import {
   DumbbellIcon,
   HomeIcon,
-  UserIcon,
-  ZapIcon,
   MenuIcon,
+  UserIcon,
   XIcon,
+  ZapIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { Button } from "./ui/button";
-import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const { isSignedIn } = useUser();
@@ -89,6 +89,7 @@ const Navbar = () => {
         </nav>
 
         {/* MOBILE NAVIGATION - SIGN IN/SIGN UP BUTTONS WHEN LOGGED OUT */}
+
         {!isSignedIn && (
           <div className="md:hidden flex items-center gap-2">
             <SignInButton>
@@ -108,6 +109,18 @@ const Navbar = () => {
         )}
 
         {/* HAMBURGER BUTTON - ONLY SHOWN WHEN SIGNED IN */}
+        {isSignedIn && (
+          <div className="md:hidden px-4 animate-puls">
+            <Button
+              asChild
+              className="w-full bg-gradient-to-r from-green-400 via-green-500 to-green-600 text-black font-semibold py-2 rounded-xl shadow-md hover:shadow-xl hover:shadow-amber-300 transition-all duration-300 ease-in-out hover:scale-[1.03]"
+            >
+              <Link href="/generate-page" className="">
+                AI-Generates
+              </Link>
+            </Button>
+          </div>
+        )}
         {isSignedIn && (
           <button
             className="md:hidden text-foreground hover:text-primary transition-colors"

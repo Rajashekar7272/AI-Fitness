@@ -170,7 +170,7 @@ export default function PlanPage() {
                             </div>
                             {/* Expanded mobile content */}
                             {expanded && (
-                              <div className="sm:hidden mt-2 text-gray-300 text-sm space-y-1">
+                              <div className="sm:hidden mt-2 text-gray-300 text-sm space-y-1 break-words whitespace-normal">
                                 <div>
                                   <strong>Workout:</strong> {details.workout}
                                 </div>
@@ -261,7 +261,7 @@ export default function PlanPage() {
                             </div>
                             {/* Expanded mobile content */}
                             {expanded && (
-                              <div className="sm:hidden mt-2 text-gray-300 text-sm space-y-1">
+                              <div className="sm:hidden mt-2 text-gray-300 text-sm space-y-1 break-words whitespace-normal">
                                 <div>
                                   <strong>Description:</strong>{" "}
                                   {details.description}
